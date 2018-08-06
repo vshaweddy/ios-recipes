@@ -19,35 +19,9 @@ Please look at the screen recording below to know what the finished project shou
 
 ## Instructions
 
-Please fork and clone this repository. This repository does not have a starter project, so create one inside of the cloned repository folder.
+Please fork and clone this repository. This repository has a starter project with the model and a network client already created for you.
 
-### Part 1 - Model and Network Client
-
-#### Recipe
-
-1. Create a Swift file called "Recipe.swift".
-2. Add a struct called `Recipe`, and have it adopt the `Codable` protocol.
-3. Add the following properties:
-    - a `name` string
-    - an `instructions` string
-
-#### RecipesNetworkClient
-
-Next you will make a network client that will be responsible for fetching recipes from the API.
-
-1. Create a Swift file called "RecipesNetworkClient.swift".
-2. Add a struct called `RecipesNetworkClient`. 
-3. Add a static constant called `recipesURL`. Set its value to `URL(string: "https://cookbook.vapor.cloud/recipes")!`
-4. Create a `fetchRecipes` function with a `completion` closure. The completion closure should return an optional array of recipes, and an optional error. As a first measure of help for closure syntax, look at the "As a parameter to another function" section of [this page](http://goshdarnclosuresyntax.com). You're obviously free to ask a PM for help as well.
-5. This function should use `URLSession`'s `dataTask(with: URL, completion: ...)` method to create a data task. Remember to call `.resume()`.
-6. In the completion closure of the data task:
-    - Give names to the return types.
-    - Check for errors. If there is an error, call completion, and return `nil` for the array of recipes, and the error returned in the data task.
-    - Unwrap the data. If there is no data, call completion, and return `nil` for the array of recipes, and an `NSError()`.
-    - If you do get data back, use a do-try-catch block and `JSONDecoder` to decode the appropriate type from the data returned from the data task. Call completion with the decoded array of recipes and `nil` for the error.
-    - In the `catch` statement, call completion with `nil` for the array of recipes, and the error thrown in the catch block.
-
-### Part 2 - Storyboard Layout
+### Part 1 - Storyboard Layout
 
 1. Using either the `UIViewController` scene provided in the Main.storyboard, or a new one if you already deleted it:
     - Embed it in a navigation controller. Set the navigation controller as the initial view controller.
@@ -71,7 +45,7 @@ Next you will make a network client that will be responsible for fetching recipe
     - Create a Cocoa Touch subclass of `UIViewController` called `RecipeDetailViewController`. Set this scene's class to `RecipeDetailViewController`.
     - Add outlets from the label and text view to the `RecipeDetailViewController` class
 
-### Part 3 - View Controller Implementation
+### Part 2 - View Controller Implementation
 
 We're going to start the view controller implementation backwards from the actual flow of the application, starting with the `RecipeDetailViewController`. 
 
