@@ -72,7 +72,7 @@ Since this table view controller is embedded in the `MainViewController`, it wil
 5. In the `prepare(for segue: ...)`, check for the embed segue's identifier. If it is, set the `recipesTableViewController` variable to the segue's `destination`. You will need to cast the view controller as the correct subclass.
 6. Create a variable `filteredRecipes: [Recipe] = []`. 
 7. Create a function called `filterRecipes()`. This will take the text from the text field and filter the recipes with it. In the function:
-    - Unwrap the search term, and make sure it isn't an empty string. If it is an empty string, set the value of `filteredRecipes` to `allRecipes`. If there is no search term, that means you should display all of the recipes.
+    - Unwrap the search term and make sure it isn't an empty string. If search term is empty or nil, set the value of `filteredRecipes` to `allRecipes`. If there is no search term, that means you should display all of the recipes.
     - If there is a non-empty search term in the text field, using the `filter` higher-order function to filter the `allRecipes` array. It should filter by checking if the recipe's `name` or `instructions` contains the search term. Set the value of the `filteredRecipes` to the result of the `filter` method.
 8. In the action of the text field, call `resignFirstResponder()` on the text field, then call `filterRecipes()`.
 9. Add a `didSet` property observer to the `filteredRecipes` variable. It should set the `recipeTableViewController`'s `recipes` to the `filteredRecipes`.
