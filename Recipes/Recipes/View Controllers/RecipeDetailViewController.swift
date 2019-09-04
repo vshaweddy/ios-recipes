@@ -12,12 +12,34 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var instructionsTextView: UITextView!
     
+    // MARK: - Properties
+    
+    var recipe: Recipe? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateViews()
         // Do any additional setup after loading the view.
     }
     
+    // MARK: - Private Function
+    
+    private func updateViews() {
+        guard isViewLoaded else { return }
+        
+        if let unwrappedRecipe = recipe {
+            self.titleLabel.text = unwrappedRecipe.name
+            self.instructionsTextView.text = unwrappedRecipe.instructions
+        } else {
+            print("No recipe")
+        }
+
+        
+    }
 
     /*
     // MARK: - Navigation
