@@ -13,6 +13,8 @@ class MainViewController: UIViewController {
     
     // MARK: - Properties
     
+    private let persistenceController = PersistenceController()
+    
     private let networkClient = RecipesNetworkClient()
     
     private var allRecipes: [Recipe] = [] {
@@ -35,15 +37,11 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        networkClient.fetchRecipes { recipes, error in
-            if let error = error {
-                print("Error loading recipes: \(error)")
-                return
-            }
-            
-            // set the value allRecipes
-            DispatchQueue.main.async {
-                self.allRecipes = recipes ?? []
+        self.persistenceController.loadFromPersistentStore { recipes, error in
+            if let recipes = recipes {
+                self.allRecipes = recipes
+            } else {
+                self.fetchRecipes()
             }
         }
     }
@@ -57,7 +55,7 @@ class MainViewController: UIViewController {
     
     // MARK: - Private
     
-    func filterRecipes() {
+    private func filterRecipes() {
         if let searchTerm = self.searchTextField.text, !searchTerm.isEmpty {
             filteredRecipes = allRecipes.filter({ (recipe: Recipe) -> Bool in
                 return recipe.name.lowercased().contains(searchTerm.lowercased()) ||
@@ -65,6 +63,21 @@ class MainViewController: UIViewController {
             })
         } else {
             self.filteredRecipes = self.allRecipes
+        }
+    }
+    
+    private func fetchRecipes() {
+        networkClient.fetchRecipes { recipes, error in
+            if let error = error {
+                print("Error loading recipes: \(error)")
+                return
+            }
+            
+            // set the value allRecipes
+            DispatchQueue.main.async {
+                self.allRecipes = recipes ?? []
+                self.persistenceController.saveToPersistentStore(recipes: recipes)
+            }
         }
     }
     

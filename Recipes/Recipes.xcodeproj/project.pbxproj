@@ -16,6 +16,7 @@
 		E3053FCD2320564000AE9781 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3053FCC2320564000AE9781 /* MainViewController.swift */; };
 		E3053FCF232058C600AE9781 /* RecipesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3053FCE232058C600AE9781 /* RecipesTableViewController.swift */; };
 		E3053FD123205A3300AE9781 /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3053FD023205A3300AE9781 /* RecipeDetailViewController.swift */; };
+		E3053FD32320B08600AE9781 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3053FD22320B08600AE9781 /* PersistenceController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		E3053FCC2320564000AE9781 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E3053FCE232058C600AE9781 /* RecipesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesTableViewController.swift; sourceTree = "<group>"; };
 		E3053FD023205A3300AE9781 /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
+		E3053FD22320B08600AE9781 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				E3053FCB2320562500AE9781 /* View Controllers */,
 				9D59B52A2117F520002FB7CD /* Model */,
 				9D59AF452117E652002FB7CD /* Resources */,
+				E3053FD22320B08600AE9781 /* PersistenceController.swift */,
 			);
 			path = Recipes;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D59AF432117E647002FB7CD /* RecipesNetworkClient.swift in Sources */,
+				E3053FD32320B08600AE9781 /* PersistenceController.swift in Sources */,
 				9DA0F07D2117E3F800A99E97 /* AppDelegate.swift in Sources */,
 				9D59B52C2117F533002FB7CD /* Recipe.swift in Sources */,
 				E3053FCD2320564000AE9781 /* MainViewController.swift in Sources */,
